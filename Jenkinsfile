@@ -14,9 +14,11 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "mvn --version"
                 sh "mvn clean install"
             }
+        }
+        stage('Test') {
+            sh "mvn test"
         }
     }
 }
