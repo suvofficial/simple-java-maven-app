@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'agent1'
     }
+    tools {
+        maven 'maven362'
+    }
 
     stages {
         stage('Checkout') {
@@ -11,7 +14,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "echo $PATH"
+                sh "mvn --version"
                 sh "mvn clean install"
             }
         }
