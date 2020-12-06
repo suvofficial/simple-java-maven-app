@@ -60,6 +60,15 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to UAT') {
+            environment {
+                target_user = "ec2-user"
+                target_server = ""
+            }
+            steps {
+                echo "Awaiting"
+            }
+        }
     }
     post {
         always {
