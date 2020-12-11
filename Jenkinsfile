@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-                sh "mvn clean install"
+                sh "mvn clean install -DskipTests"
             }
         }
         stage ('Test') {
@@ -21,6 +21,10 @@ pipeline{
             sh "mvn test"
             }
         }
+        stage('Post tasks'){
+            steps{
+                sh "echo send an email"
+            }
+        }
     }
  }
-//hi
