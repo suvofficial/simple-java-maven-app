@@ -26,9 +26,16 @@ pipeline{
             junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
             }
         }
-        stage('Post tasks'){
-            steps{
-                sh "echo send an email"
+        post {
+            always {
+                deleteDir()
+            }
+            failure {
+                echo "sendmail -s Maven job Failed receipient@mycompany.com"
+
+            }
+            success{
+                echo "The job is successful"
             }
         }
     }
